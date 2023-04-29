@@ -56,3 +56,24 @@
 //         box-shadow: 0 0 0 10px  rgba(110, 110, 255, 0.3);
 //     }
 // }
+
+
+.navbar-expand-none {
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    width: 100%;
+  }
+  .navbar-expand-none .navbar-nav {
+    flex-direction: row;
+  }
+  .navbar-expand-none .navbar-nav .nav-link {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
+  .navbar-expand-none .navbar-collapse {
+    display: flex!important;
+    flex-basis: auto;
+  }
+  .navbar-expand-none .navbar-toggler {
+    display: none;
+  }
