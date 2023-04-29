@@ -1,1 +1,16 @@
-//
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600&display=swap');
+// Fontawesome icon
+// @import './partials/_fontawesome';
+// My scss
+@import './partials/_variables';
+@import './partials/scrollbar';
+@import './partials/_divider';
+@import './partials/_layout-backoffice';
+
+@import './debus.scss';
+
+
+
