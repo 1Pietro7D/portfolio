@@ -1,4 +1,4 @@
-@extends('../layouts.app')
+@extends('../layouts.app-backoffice')
 
 @section('content')
     <div class="bo-home">
