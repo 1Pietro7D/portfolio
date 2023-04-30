@@ -16,9 +16,6 @@ use Illuminate\Support\Facades\Auth;
 
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::middleware('auth')  //si collega alla cartella middleware
     ->namespace('admin')  //controller inseriti in sottocartella Admin
     ->name('admin.')      //name delle rotte che iniziano con admin.  //cartella admin dove dentro ci sono i file
@@ -27,11 +24,16 @@ Route::middleware('auth')  //si collega alla cartella middleware
         Route::get('/', function () {
             return view('admin.test');
         });
-    });
 
-   Route::get('{any?}', function() {  // or any other path returns home.home in view
+        // Route::get('/restaurants', 'RestaurantController@index')->name('index'); // rotta se utente autenticato
+        // // andiamo a connetterci al controller CRUD associato ai restaurants
+        // Route::resource('restaurants', 'RestaurantController')->parameters(['restaurants'=>'restaurant:slug']);
+        // Route::resource('dishes', 'DishController');
+        // Route::resource('orders', 'OrderController');
+    });
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('{any?}', function() {  // or any other path returns home.home in view
     return view("home.home");
-    return view("layouts/app");
  })->where("any", ".*");
 
 
