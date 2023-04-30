@@ -9,9 +9,11 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
-
+                <!-- Hidden Side Of Navbar -->
+                <ul class="navbar-nav mr-auto d-block d-md-none nav-hidden">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('home') }}">Home</a>
+                    </li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

@@ -49806,22 +49806,7 @@ window.onload = function () {
     var newWidth = (leftSection.offsetWidth + diffX) / containerWidth * 100;
     leftSection.style.flexBasis = "".concat(newWidth, "%");
     prevX = newX;
-
-    // query in container for bootstrap navbar
-    var nav_header = document.querySelector("#nav-header");
-
-    // Check if the right section is less than 768px
-    if (rightSection.offsetWidth < 766) {
-      nav_header.classList.add('navbar-expand-xxl');
-      nav_header.classList.add('flex-xxl-nowrap');
-      nav_header.classList.remove('navbar-expand-md');
-      nav_header.classList.remove('flex-md-nowrap');
-    } else {
-      nav_header.classList.remove('navbar-expand-xxl');
-      nav_header.classList.remove('flex-xxl-nowrap');
-      nav_header.classList.add('navbar-expand-md');
-      nav_header.classList.add('flex-md-nowrap');
-    }
+    collapseNavbar();
   }
 
   // Define a function to stop resizing
@@ -49846,23 +49831,41 @@ window.onload = function () {
 
 // my query js
 function handleWindowResize() {
-  var nav_header = document.querySelector("#nav-header");
+  collapseNavbar();
   var leftSection = document.querySelector(".bo-left-section");
   var rightSection = document.querySelector(".bo-right-section");
   if (window.innerWidth < 768) {
     leftSection.classList.add('d-none');
-    nav_header.classList.add('navbar-expand-md');
-    nav_header.classList.add('flex-md-nowrap');
     rightSection.style.minWidth = "0px";
   } else if (window.innerWidth >= 768) {
     leftSection.classList.remove('d-none');
-    nav_header.classList.remove('navbar-expand-md');
-    nav_header.classList.remove('flex-md-nowrap');
     leftSection.style.flexBasis = "190px";
     rightSection.style.minWidth = "574pxpx";
   }
 }
 window.addEventListener('resize', handleWindowResize);
+
+//Bootstrap navbar collapse
+function collapseNavbar() {
+  // query in container for bootstrap navbar
+  var nav_header = document.querySelector("#nav-header");
+  var rightSection = document.querySelector(".bo-right-section");
+  var nav_hidden = document.querySelector(".nav-hidden");
+  // Check if the right section is less than 768px
+  if (rightSection.offsetWidth < 766) {
+    nav_header.classList.add('navbar-expand-xxl');
+    nav_header.classList.add('flex-xxl-nowrap');
+    nav_header.classList.remove('navbar-expand-md');
+    nav_header.classList.remove('flex-md-nowrap');
+    nav_hidden.classList.remove('d-md-none');
+  } else {
+    nav_header.classList.remove('navbar-expand-xxl');
+    nav_header.classList.remove('flex-xxl-nowrap');
+    nav_header.classList.add('navbar-expand-md');
+    nav_header.classList.add('flex-md-nowrap');
+    nav_hidden.classList.add('d-md-none');
+  }
+}
 
 /***/ }),
 
