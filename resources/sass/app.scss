@@ -3,7 +3,9 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600&display=swap');
 // Fontawesome icon
-// @import './partials/_fontawesome';
+@import './partials/_fontawesome';
+//for load in web site -- temporarily disabled
+// @import "~placeholder-loading/src/scss/placeholder-loading";
 // My scss
 @import 'variables';
 @import './partials/scrollbar';
