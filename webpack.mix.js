@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const path = require('path');
 
 /*
  |--------------------------------------------------------------------------
@@ -11,5 +12,17 @@ const mix = require('laravel-mix');
  |
  */
 
+/* Path Aliasing for Vue */
+mix.webpackConfig({
+    resolve: {
+        alias: {
+            '@': path.resolve('resources/js'),
+        }
+    }
+});
+
 mix.js('resources/js/app.js', 'public/js')
+    .js('resources/js/app-backoffice.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
+
+// mix.browserSync('127.0.0.1:8000');

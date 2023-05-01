@@ -2,6 +2,6 @@
 
 @section('content')
     <div class="bo-home">
-        <div class="debug"></div>
+        <div class="debug"><i class="fa-solid fa-square-phone"></i></div>
     </div>
 @endsection
