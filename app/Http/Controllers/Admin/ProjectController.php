@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use App\Models\Skill;
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
-class SkillController extends Controller
+class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class SkillController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Skill  $skill
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show(Skill $skill)
+    public function show(Project $project)
     {
         //
     }
@@ -52,10 +52,10 @@ class SkillController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Skill  $skill
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function edit(Skill $skill)
+    public function edit(Project $project)
     {
         //
     }
@@ -64,10 +64,10 @@ class SkillController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Skill  $skill
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Skill $skill)
+    public function update(Request $request, Project $project)
     {
         //
     }
@@ -75,10 +75,10 @@ class SkillController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Skill  $skill
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Skill $skill)
+    public function destroy(Project $project)
     {
         //
     }
