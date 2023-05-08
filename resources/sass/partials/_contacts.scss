@@ -1,0 +1,28 @@
+.container-list-contacts{
+    padding: 2rem;
+    .container-body{
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+        .contact-item{
+            padding: 1rem;
+            border: 2px solid black;
+            border-radius: 5px;
+            background-color: rgb(0, 47, 101);
+            .contact-show{
+                display: flex;
+                gap: 1rem;
+            }
+            .cont-btn{
+                align-items: center;
+                display: flex;
+                gap: 1rem;
+            }
+        }
+        .contact-item:hover{
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+        }
+
+    }
+}

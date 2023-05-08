@@ -1,0 +1,32 @@
+.form-create{
+    background-color: rgb(106, 106, 106);
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: 7px;
+}
+.container-list-skills{
+    padding: 2rem 3rem;
+    ul.container-body{
+        list-style: none;
+        border: 8px;
+        background-color: rgb(112, 112, 112);
+        padding: .25rem .5rem;
+        .skill-item{
+            padding: 1rem 1.5rem;
+            display: flex;
+            border: 2px solid rgb(67, 67, 67);
+            color: black;
+            justify-content: space-between;
+            .skill-icon{
+
+                    width: 40px;
+
+                    height: 40px;
+
+                }
+        }
+        .skill-item:hover{
+            background-color: white;
+        }
+    }
+}

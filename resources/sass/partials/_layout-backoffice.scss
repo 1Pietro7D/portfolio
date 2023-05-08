@@ -1,3 +1,7 @@
+@import './projects';
+@import './skills';
+@import './contacts';
+
 .bo-container {
     display: flex;
     height: 100vh;
@@ -24,6 +28,7 @@
     overflow: auto;
     background-color: #161212;
     overflow-y: scroll;
+    color: white;
 }
 
 .bo-home {
@@ -33,4 +38,4 @@
     background-repeat: no-repeat;
     background-size: cover; /* Adatta l'immagine al contenitore, coprendolo completamente */
     background-position: center center;
-  }
+}
