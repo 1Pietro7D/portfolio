@@ -22,8 +22,10 @@ Route::middleware('auth')  //si collega alla cartella middleware
     ->name('admin.')      //name delle rotte che iniziano con admin.  //cartella admin dove dentro ci sono i file
     ->prefix('admin')
     ->group(function () {
-        Route::get('/', function () {
-            return view('admin.home');});// rotta se utente autenticato
+        Route::get('/home', function () {
+            return view('admin.home');
+        });// rotta se utente autenticato
+
         Route::prefix('cv')->group(function () {
             Route::get('/view', [CVController::class, 'view'])->name('cv.view');
             Route::get('/download', [CVController::class, 'download'])->name('cv.download');
@@ -35,7 +37,7 @@ Route::middleware('auth')  //si collega alla cartella middleware
         Route::resource('contacts', 'ContactController')->parameters(['contacts'=>'contact:slug']);
         Route::resource('icons', 'IconController')->parameters(['icons'=>'icon:slug']);
     });
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 // Route::get('{any?}', function() {  // or any other path returns home.home in view
 //     return view("home.home");
 //  })->where("any", ".*");
