@@ -8,6 +8,9 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    public function portfolio(){
+        return $this->hasOne('App\Models\Portfolio');
+    }
     use Notifiable;
 
     /**

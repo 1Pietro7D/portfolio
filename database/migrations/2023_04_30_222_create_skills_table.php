@@ -15,6 +15,18 @@ class CreateSkillsTable extends Migration
     {
         Schema::create('skills', function (Blueprint $table) {
             $table->id();
+            // FK portfolio
+            $table->unsignedBigInteger('portfolio_id');
+            $table
+                ->foreign('portfolio_id')
+                ->references('id')
+                ->on('portfolios')
+                ->onDelete('cascade');
+            // attributes
+            $table->string('name', 40)->unique()->notNull();
+            $table->string('slug')->unique()->notNull();
+            $table->text('icon_path')->notNull();
+
             $table->timestamps();
         });
     }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use App\Helper\Utils;
+use App\Models\Icon;
 
 class ContactController extends Controller
 {
@@ -14,7 +16,10 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        // get all contacts by myPortfolio
+        $contacts = Utils::getByPortfolio(Contact::class);
+        // return contact.index view vith all contacts
+        return view('admin.contacts.index', compact('contacts'));
     }
 
     /**
@@ -24,7 +29,10 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+        // get all icons
+        $icons = Icon::all();
+        // return view for form-create with all icon
+        return view('admin.contacts.create', compact('icons'));
     }
 
     /**
@@ -35,7 +43,23 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validation
+        $this->validateContact($request);
+        //set request-form
+        $form_data = $request->all();
+        // create New Contact
+        $contact = New Contact();
+        // set FK portfolio
+        $contact->portfolio_id = Utils::getMyPortfolio()->id;
+        // generate slug
+        $slug = Utils::generateSlug(Contact::class , $form_data['name']);
+        $contact->slug = $slug;
+        // fill form_data in contact
+        $contact->fill($form_data);
+        // save to db
+        $contact->save();
+        // return redirect show by slug
+        return redirect()->route('admin.contacts.index');
     }
 
     /**
@@ -44,9 +68,12 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function show(Contact $contact)
+    public function show($slug)  // DISABLE
     {
-        //
+        // find contact By Slug
+        // $contact = Utils::getBySlug(Contact::class, $slug);
+        // return view contact.show with contactBySlug
+        // return view('admin.contacts.show', compact('contact')); // DISABLE
     }
 
     /**
@@ -55,9 +82,14 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function edit(Contact $contact)
+    public function edit($slug)
     {
-        //
+        // get contact with this slug
+        $contact = Utils::getBySlug(Contact::class, $slug);
+        // get all icons
+        $icons = Icon::all();
+        // return view with form for edit contact and all icons for check-box
+        return view('admin.contacts.edit', compact(['contact','icons']));
     }
 
     /**
@@ -67,9 +99,21 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contact $contact)
+    public function update(Request $request, $slug)
     {
-        //
+        // validation
+        $this->validateContact($request);
+        // get contact with this slug
+        $contact = Utils::getBySlug(Contact::class, $slug);
+        //set request-form
+        $form_data = $request->all();
+        // generate slug
+        $slug = Utils::generateSlug(Contact::class , $form_data['name']);
+        $contact->slug = $slug;
+        // update to db
+        $contact->update($form_data);
+        // return redirect show by slug
+        return redirect()->route('admin.contacts.index');
     }
 
     /**
@@ -78,8 +122,19 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contact $contact)
+    public function destroy($slug)
     {
-        //
+        // get contact with this slug
+        $contact = Utils::getBySlug(Contact::class, $slug);
+        // delete contact in db
+        $contact->delete();
+        // return redirect index
+        return redirect()->route('admin.contacts.index');
+    }
+
+    // Validation
+    private function validateContact(Request $request)
+    {
+        $request->validate([]);
     }
 }
