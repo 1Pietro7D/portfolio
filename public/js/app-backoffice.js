@@ -37352,7 +37352,8 @@ module.exports = function(module) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-__webpack_require__(/*! ./divider */ "./resources/js/divider.js");
+__webpack_require__(/*! ./divider/bo-resizer */ "./resources/js/divider/bo-resizer.js");
+__webpack_require__(/*! ./events/onLoad-window */ "./resources/js/events/onLoad-window.js");
 
 /***/ }),
 
@@ -37405,15 +37406,23 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/js/divider.js":
-/*!*********************************!*\
-  !*** ./resources/js/divider.js ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/***/ "./resources/js/divider/bo-resizer.js":
+/*!********************************************!*\
+  !*** ./resources/js/divider/bo-resizer.js ***!
+  \********************************************/
+/*! exports provided: resizer */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// Wait for the window to finish loading before executing the script
-window.onload = function () {
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resizer", function() { return resizer; });
+/* harmony import */ var _resize_query_right_query_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./resize-query/right-query.js */ "./resources/js/divider/resize-query/right-query.js");
+/* harmony import */ var _resize_query_left_query_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./resize-query/left-query.js */ "./resources/js/divider/resize-query/left-query.js");
+/* harmony import */ var _resize_query_bootstrap_query_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./resize-query/bootstrap-query.js */ "./resources/js/divider/resize-query/bootstrap-query.js");
+
+
+
+function resizer() {
   // Select the necessary HTML elements and assign them to variables
   var container = document.querySelector(".bo-container");
   var leftSection = document.querySelector(".bo-left-section");
@@ -37428,7 +37437,9 @@ window.onload = function () {
   // Initialize variables to keep track of the resize state
   var isResizing = false;
   var prevX = 0;
+  // load size onload
   handleWindowResize();
+
   // Define a function to resize the left section based on mouse movement
   function resizeElement(e) {
     // If resizing is not in progress, exit the function
@@ -37438,12 +37449,17 @@ window.onload = function () {
     var newX = e.clientX;
     var diffX = newX - prevX;
 
-    // Calculate the width of the container and the new width of the left section
+    // Find the width of the container of my app (100vw)
     var containerWidth = container.offsetWidth;
+    // Calculate the new width of the left section
     var newWidth = (leftSection.offsetWidth + diffX) / containerWidth * 100;
+    // resize leftSection
     leftSection.style.flexBasis = "".concat(newWidth, "%");
     prevX = newX;
-    collapseNavbar();
+    // resize other elements
+    _resize_query_bootstrap_query_js__WEBPACK_IMPORTED_MODULE_2__["collapseNavbar"]();
+    _resize_query_right_query_js__WEBPACK_IMPORTED_MODULE_0__["rightWindowResize"]();
+    // naturaly dont resize leftWindowResize
   }
 
   // Define a function to stop resizing
@@ -37459,30 +37475,36 @@ window.onload = function () {
     // Set the resizing state to true and record the initial position of the mouse
     isResizing = true;
     prevX = e.clientX;
-
     // Add event listeners to the body to resize the element and stop resizing when the mouse is released
     document.body.addEventListener("mousemove", resizeElement);
     document.body.addEventListener("mouseup", stopResize);
   });
-};
+}
+;
 
 // my query js
 function handleWindowResize() {
-  collapseNavbar();
-  var leftSection = document.querySelector(".bo-left-section");
-  var rightSection = document.querySelector(".bo-right-section");
-  if (window.innerWidth < 768) {
-    leftSection.classList.add('d-none');
-    rightSection.style.minWidth = "0px";
-  } else if (window.innerWidth >= 768) {
-    leftSection.classList.remove('d-none');
-    leftSection.style.flexBasis = "190px";
-    rightSection.style.minWidth = "574pxpx";
-  }
+  _resize_query_bootstrap_query_js__WEBPACK_IMPORTED_MODULE_2__["collapseNavbar"]();
+  _resize_query_left_query_js__WEBPACK_IMPORTED_MODULE_1__["leftWindowResize"]();
+  _resize_query_right_query_js__WEBPACK_IMPORTED_MODULE_0__["rightWindowResize"]();
 }
+
+// resize if resize windows viewport
 window.addEventListener('resize', handleWindowResize);
 
-//Bootstrap navbar collapse
+/***/ }),
+
+/***/ "./resources/js/divider/resize-query/bootstrap-query.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/divider/resize-query/bootstrap-query.js ***!
+  \**************************************************************/
+/*! exports provided: collapseNavbar */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "collapseNavbar", function() { return collapseNavbar; });
+// Bootstrap navbar collapse
 function collapseNavbar() {
   // query in container for bootstrap navbar
   var nav_header = document.querySelector("#nav-header");
@@ -37501,6 +37523,133 @@ function collapseNavbar() {
     nav_header.classList.add('navbar-expand-md');
     nav_header.classList.add('flex-md-nowrap');
     nav_hidden.classList.add('d-md-none');
+  }
+}
+
+/***/ }),
+
+/***/ "./resources/js/divider/resize-query/left-query.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/divider/resize-query/left-query.js ***!
+  \*********************************************************/
+/*! exports provided: leftWindowResize */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "leftWindowResize", function() { return leftWindowResize; });
+function leftWindowResize() {
+  var leftSection = document.querySelector(".bo-left-section");
+  if (window.innerWidth < 768) {
+    leftSection.classList.add('d-none');
+  } else if (window.innerWidth >= 768) {
+    leftSection.classList.remove('d-none');
+    leftSection.style.flexBasis = "190px";
+  }
+}
+
+/***/ }),
+
+/***/ "./resources/js/divider/resize-query/right-query.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/divider/resize-query/right-query.js ***!
+  \**********************************************************/
+/*! exports provided: rightWindowResize */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rightWindowResize", function() { return rightWindowResize; });
+function rightWindowResize() {
+  setHeightProjectCard();
+  var rightSection = document.querySelector(".bo-right-section");
+  if (window.innerWidth < 768) {
+    rightSection.style.minWidth = "0px";
+  } else if (window.innerWidth >= 768) {
+    rightSection.style.minWidth = "574pxpx";
+  }
+}
+// perfect project-card square
+function setHeightProjectCard() {
+  var container = document.querySelector(".container-body");
+  // IF EXIST IN HTML
+  if (document.querySelector(".proj-card")) {
+    var cardProjects = document.querySelectorAll(".proj-card");
+    cardProjects.forEach(function (card) {
+      // set quantity card
+      var quantity = setQuantityCardsQuery();
+      if (quantity == 1.1) {
+        card.style.margin = "auto";
+      } else {
+        card.style.margin = "";
+      }
+      card.style.width = container.offsetWidth / quantity + "px";
+      card.style.height = container.offsetWidth / quantity + "px";
+    });
+  }
+}
+function setQuantityCardsQuery() {
+  var sizePx = document.querySelector(".container-body").offsetWidth;
+  var quantity = 1;
+  if (sizePx < 578) quantity = 1.1; // with 1 will block
+  if (sizePx >= 578) quantity = 2;
+  if (sizePx > 768) quantity = 3;
+  if (sizePx > 992) quantity = 3;
+  if (sizePx > 1200) quantity = 4;
+  return quantity;
+}
+
+/***/ }),
+
+/***/ "./resources/js/events/onLoad-window.js":
+/*!**********************************************!*\
+  !*** ./resources/js/events/onLoad-window.js ***!
+  \**********************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _divider_bo_resizer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../divider/bo-resizer */ "./resources/js/divider/bo-resizer.js");
+
+// Wait for the window to finish loading before executing the script
+window.onload = function () {
+  //function load
+  _divider_bo_resizer__WEBPACK_IMPORTED_MODULE_0__["resizer"]();
+  showForm();
+};
+function showForm() {
+  if (document.querySelectorAll(".expand-form")) {
+    var buttons = document.querySelectorAll(".expand-form");
+    buttons.forEach(function (btn, i) {
+      console.log(i);
+      btn.addEventListener("click", function () {
+        var dataId = btn.dataset.data_item;
+        console.log(dataId);
+        console.log(i);
+        var item_edit = document.getElementById(dataId);
+        item_edit.classList.toggle('d-none');
+        if (i > 0) {
+          // 0 is Create btn
+          var icon = btn.querySelector('i');
+          console.log(icon);
+          icon.classList.toggle('fa-pen');
+          icon.classList.toggle('fa-square-minus');
+          btn.classList.toggle('btn-primary');
+          btn.classList.toggle('btn-warning');
+        }
+      });
+    });
+    var btn_create = document.getElementById('create-btn');
+    if (btn_create) {
+      btn_create.addEventListener("click", function () {
+        var icon = document.getElementById('create-icon');
+        icon.classList.toggle('fa-square-plus');
+        icon.classList.toggle('fa-square-minus');
+        btn_create.classList.toggle('btn-primary');
+        btn_create.classList.toggle('btn-warning');
+      });
+    }
   }
 }
 

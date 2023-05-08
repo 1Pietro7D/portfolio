@@ -1,2 +1,4 @@
 require('./bootstrap');
-require('./divider')
+require('./divider/bo-resizer');
+require('./events/onLoad-window')
+

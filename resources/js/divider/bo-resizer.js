@@ -1,5 +1,8 @@
-// Wait for the window to finish loading before executing the script
-window.onload = function () {
+import * as Right from './resize-query/right-query.js';
+import * as Left from './resize-query/left-query.js';
+import * as BsResize from './resize-query/bootstrap-query.js';
+
+export function resizer() {
     // Select the necessary HTML elements and assign them to variables
     const container = document.querySelector(".bo-container");
     let leftSection = document.querySelector(".bo-left-section");
@@ -14,10 +17,12 @@ window.onload = function () {
     // Initialize variables to keep track of the resize state
     let isResizing = false;
     let prevX = 0;
-
+    // load size onload
     handleWindowResize()
+
     // Define a function to resize the left section based on mouse movement
     function resizeElement(e) {
+
         // If resizing is not in progress, exit the function
         if (!isResizing) return;
 
@@ -25,16 +30,17 @@ window.onload = function () {
         const newX = e.clientX;
         const diffX = newX - prevX;
 
-        // Calculate the width of the container and the new width of the left section
+        // Find the width of the container of my app (100vw)
         const containerWidth = container.offsetWidth;
-
+        // Calculate the new width of the left section
         let newWidth = ((leftSection.offsetWidth + diffX) / containerWidth) * 100;
+        // resize leftSection
         leftSection.style.flexBasis = `${newWidth}%`;
         prevX = newX;
-        collapseNavbar()
-
-
-
+        // resize other elements
+        BsResize.collapseNavbar();
+        Right.rightWindowResize();
+        // naturaly dont resize leftWindowResize
 
     }
 
@@ -51,7 +57,6 @@ window.onload = function () {
         // Set the resizing state to true and record the initial position of the mouse
         isResizing = true;
         prevX = e.clientX;
-
         // Add event listeners to the body to resize the element and stop resizing when the mouse is released
         document.body.addEventListener("mousemove", resizeElement);
         document.body.addEventListener("mouseup", stopResize);
@@ -60,41 +65,12 @@ window.onload = function () {
 
 // my query js
 function handleWindowResize() {
-    collapseNavbar();
-    let leftSection = document.querySelector(".bo-left-section");
-    let rightSection = document.querySelector(".bo-right-section");
-    if (window.innerWidth < 768) {
-        leftSection.classList.add('d-none');
-        rightSection.style.minWidth = "0px";
-    } else if (window.innerWidth >= 768) {
-        leftSection.classList.remove('d-none');
-        leftSection.style.flexBasis = "190px";
-        rightSection.style.minWidth = "574pxpx";
-    }
+    BsResize.collapseNavbar();
+    Left.leftWindowResize();
+    Right.rightWindowResize();
 }
 
+// resize if resize windows viewport
 window.addEventListener('resize', handleWindowResize);
 
-//Bootstrap navbar collapse
-function collapseNavbar() {
-    // query in container for bootstrap navbar
-    let nav_header = document.querySelector("#nav-header");
-    let rightSection = document.querySelector(".bo-right-section");
-    let nav_hidden = document.querySelector(".nav-hidden");
-    // Check if the right section is less than 768px
-    if (rightSection.offsetWidth < 766) {
-        nav_header.classList.add('navbar-expand-xxl');
-        nav_header.classList.add('flex-xxl-nowrap');
-        nav_header.classList.remove('navbar-expand-md');
-        nav_header.classList.remove('flex-md-nowrap');
-        nav_hidden.classList.remove('d-md-none')
-
-    } else {
-        nav_header.classList.remove('navbar-expand-xxl');
-        nav_header.classList.remove('flex-xxl-nowrap');
-        nav_header.classList.add('navbar-expand-md');
-        nav_header.classList.add('flex-md-nowrap')
-        nav_hidden.classList.add('d-md-none')
-    }
-}
 
