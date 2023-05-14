@@ -2,7 +2,7 @@
     <nav class="">
         <ul>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('home') }}">Home</a>
+                <a class="nav-link" href="/admin/home">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.portfolios.index') }}">Portfolio</a>
