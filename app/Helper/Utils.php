@@ -3,8 +3,9 @@
 namespace App\Helper;
 use App\Models\Portfolio;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Auth;
+// use Illuminate\Support\Facades\Auth; // DISABLE autentication
 use Illuminate\Support\Facades\Storage;
+use App\User;
 
 class Utils
 {
@@ -59,7 +60,8 @@ class Utils
     */
     public static function getUser(){
         // Get the currently authenticated user
-        return Auth::user();
+        // return Auth::user();
+        return User::get()->first(); // not autenticated
     }
 
     /**
