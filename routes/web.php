@@ -15,6 +15,10 @@ use App\Http\Controllers\Admin\CVController;
 |
 */
 
+// route for frontApi
+Route::get('/', function () {
+    return view('layouts.app-front');
+}); // return only view
 
 Auth::routes();
 Route::middleware('auth')  //si collega alla cartella middleware
@@ -24,20 +28,21 @@ Route::middleware('auth')  //si collega alla cartella middleware
     ->group(function () {
         Route::get('/home', function () {
             return view('admin.home');
-        });// rotta se utente autenticato
+        });// route for user autenticate
 
         Route::prefix('cv')->group(function () {
             Route::get('/view', [CVController::class, 'view'])->name('cv.view');
             Route::get('/download', [CVController::class, 'download'])->name('cv.download');
         });
+
         Route::resource('portfolios', 'PortfolioController')->except('show');
-        Route::resource('sections', 'SectionController')->parameters(['sections'=>'section:slug']);
+        Route::resource('sections', 'SectionController')->except(['show','create','edit'])->parameters(['sections'=>'section:slug']);
         Route::resource('projects', 'ProjectController')->parameters(['projects'=>'project:slug']);
         Route::resource('skills', 'SkillController')->except(['show','create','edit'])->parameters(['skills'=>'skill:slug']);
         Route::resource('contacts', 'ContactController')->parameters(['contacts'=>'contact:slug']);
-        Route::resource('icons', 'IconController')->parameters(['icons'=>'icon:slug']);
+        Route::resource('icons', 'IconController')->except(['show','create','edit'])->parameters(['icons'=>'icon:slug']);
     });
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/back', 'HomeController@index')->name('home');
 // Route::get('{any?}', function() {  // or any other path returns home.home in view
 //     return view("home.home");
 //  })->where("any", ".*");
