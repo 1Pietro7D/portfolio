@@ -102,7 +102,7 @@ class SkillController extends Controller
         // get request-form
         $form_data = $request->all();
         // generate slug
-        $slug = Utils::generateSlug(Skill::class , $skill->title);
+        $slug = Utils::generateSlug(Skill::class , $form_data['name']);
         $skill->slug = $slug;
         // update to db
         $skill->update($form_data);
