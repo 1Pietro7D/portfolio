@@ -8,20 +8,20 @@ import Projects from "./vue/components/ProjectsCarousel.vue"
 const router = new VueRouter({
     // mode: 'history',
     routes: [
-        {
-            path: '/',
-            name: 'home', alias: ['/home', '/portfolio'],
-            component: Projects
-        },
+
         {
             path: '/project',  //:slug
             name: 'project',
             component: ProjectDetail
         },
         {
-            path: '*',
+            path: '/project/*',
             name: "404",
             component: () => import('./vue/components/NotFound.vue')
+        }, {
+            path: '*',
+            name: 'home', alias: ['/home', '/portfolio'],
+            component: Projects
         }
     ]
 });
