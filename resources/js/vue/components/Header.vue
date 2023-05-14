@@ -1,7 +1,7 @@
 <template>
     <header>
         <nav>
-            <div v-for="link of links" :key="link">
+            <div v-for="(link, i) of links" :key="i">
                 <a :href="link.path">{{ link.label }}</a>
             </div>
 
