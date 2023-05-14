@@ -2,27 +2,27 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
-// import ProjectDetail from "./components/ProjectDetail.vue"
-// import PortfolioComponent from "./components/PortfolioComponent.vue"
+import ProjectDetail from "./vue/components/ProjectDetail.vue"
+import Projects from "./vue/components/ProjectsCarousel.vue"
 
 const router = new VueRouter({
-    mode: 'history',
+    // mode: 'history',
     routes: [
-        //     {
-        //         path: '/',
-        //         name: 'home', alias: ['/home', '/portfolio'],
-        //         component: PortfolioComponent
-        //     },
-        //     {
-        //         path: '/project/:slug',
-        //         name: 'project',
-        //         component: ProjectDetail
-        //     },
-        //     {
-        //         path: '*',
-        //         name: "404",
-        //         component: () => import('./components/notFound.vue')
-        //     }
+        {
+            path: '/',
+            name: 'home', alias: ['/home', '/portfolio'],
+            component: Projects
+        },
+        {
+            path: '/project',  //:slug
+            name: 'project',
+            component: ProjectDetail
+        },
+        {
+            path: '*',
+            name: "404",
+            component: () => import('./vue/components/NotFound.vue')
+        }
     ]
 });
 

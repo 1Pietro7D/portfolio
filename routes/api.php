@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-
+Route::resource('portfolio', 'Api\PortfolioApiController', ['only'=>['index','show']]);
 // route for frontApi here controller
 // Route::get('/', function () {
 //     return view('layouts.app-front');
