@@ -1,14 +1,18 @@
 <template>
     <div id="app-front">
-        <Header />
-        <main>
-            {{ portfolio }}
-            <Section id="about-me-section" />
-            <Skills id="skills-section" />
-            <router-view id="projects-section"></router-view>
-            <Contacts id="contact-me" />
-        </main>
-        <Footer />
+        <div v-if="loading">Loading</div>
+        <div v-else-if="portfolio" class="layout-container">
+            <Header />
+            <main>
+                <Section id="about-me-section" :section="portfolio.section" />
+                <Skills id="skills-section" :skills="portfolio.skills" />
+                <router-view id="projects-section"
+                    :projects="portfolio.projects"><!-- props for only ProjectsCarousel --></router-view>
+                <Contacts id="contact-me" :contacts="portfolio.contacts" />
+            </main>
+            <Footer />
+        </div>
+        <div v-else>Errore</div>
     </div>
 </template>
 
@@ -63,4 +67,20 @@ export default {
 
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.layout-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+    main {
+        overflow-y: scroll;
+        flex-grow: 1;
+    }
+
+    header,
+    footer {
+        flex-shrink: 0;
+    }
+}
+</style>
