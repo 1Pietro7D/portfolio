@@ -19,6 +19,11 @@ class PortfolioApiController extends Controller
         //
         try{
             $portfolio = Utils::getMyPortfolio();
+            $portfolio->skills;
+            $portfolio->projects;
+            $portfolio->contacts;
+            $portfolio->section;
+
             $data = [
                 'results' => $portfolio,
                 'success' => true
