@@ -1,10 +1,20 @@
 <template>
     <header>
-        <nav>
-            <div v-for="(link, i) of links" :key="i">
-                <a :href="link.path">{{ link.label }}</a>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Portfolio</a>
+                <button class="navbar-toggler" type="button" id="navbarTogglerSupported" data-toggle="collapse"
+                    data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse text-right" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li v-for="(link, i) of links" :key="i" class="nav-item ml-3 py-2">
+                            <a :href="link.path">{{ link.label }}</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-
         </nav>
     </header>
 </template>
@@ -15,6 +25,7 @@ export default {
     data() {
         return {
             links: [
+
                 {
                     label: 'About me',
                     path: '#about-me-section'
@@ -27,6 +38,9 @@ export default {
                 }, {
                     label: 'Contact me',
                     path: '#contact-me-section'
+                }, {
+                    label: 'BackOffice',
+                    path: '../back'
                 }
             ]
         }
@@ -39,4 +53,8 @@ export default {
 
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+a {
+    color: white;
+}
+</style>
