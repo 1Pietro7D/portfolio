@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Helper\Utils;
+use App\Models\Project;
 use Error;
 
 class PortfolioApiController extends Controller
@@ -21,7 +22,9 @@ class PortfolioApiController extends Controller
             $portfolio = Utils::getMyPortfolio();
             $portfolio->skills;
             $portfolio->projects;
-            $portfolio->contacts;
+            foreach( $portfolio->contacts as $contact){
+                $contact->icon;
+            };
             $portfolio->section;
 
             $data = [

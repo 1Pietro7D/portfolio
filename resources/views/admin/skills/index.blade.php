@@ -4,14 +4,14 @@
     @if ($skills)
         <div class="d-flex justify-content-around p-2 align-items-center">
             <h1>Skills</h1>
-            {{-- Form expand --}}
+            {{-- Form expand for CREATE --}}
             <div class="d-flex align-items-center">
                 <div class="btn btn-primary expand-form" data-data_item="skill_id" id="create-btn">
                     <i class="fa-solid fa-square-plus" id="create-icon"></i>
                 </div>
 
                 <div class="d-none form-create" id="skill_id">
-                    {{-- CREATE skills --}}
+                    {{-- CREATE skill --}}
                     <form action="{{ route('admin.skills.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div>
@@ -39,21 +39,21 @@
         @else
             <div class="container-list-skills">
                 <ul class="container-body">
-                    {{-- CARDS --}}
+                    {{-- CARDS for all skills --}}
                     @foreach ($skills->reverse() as $skill)
                         <li class="skill-item">
                             <div class="d-flex">
                                 <i class="skill-icon {{ $skill->icon_path }}"></i>
                                 <h4>{{ $skill->name }}</h4>
                             </div>
-                            {{-- Form expand --}}
+                            {{-- Form expand for skill for EDIT and DELETE --}}
                             <div class="d-flex align-items-center justify-content-around">
                                 <div class="btn btn-primary expand-form" data-data_item="skill_id{{ $skill->id }}">
                                     <i class="fas fa-pen"></i>
                                 </div>
 
                                 <div class="my-cont-btn d-none" id="skill_id{{ $skill->id }}">
-                                    {{-- EDIT --}}
+                                    {{-- EDIT skill --}}
                                     <form action="{{ route('admin.skills.update', $skill->slug) }}" method="POST"
                                         enctype="multipart/form-data">
                                         @csrf
@@ -74,7 +74,7 @@
                                         </button>
 
                                     </form>
-                                    {{-- DELETE --}}
+                                    {{-- DELETE skill --}}
                                     <div>
                                         <form method="POST" action="{{ route('admin.skills.destroy', $skill->slug) }}">
                                             @csrf

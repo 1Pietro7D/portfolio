@@ -1,7 +1,7 @@
 <template>
-    <div>
-        Not Found
-    </div>
+    <section>
+        Project not Found
+    </section>
 </template>
 
 <script>
@@ -10,8 +10,6 @@ export default {
     mounted() {
         console.log('Not Found mounted.')
     }
-
-
 }
 
 </script>

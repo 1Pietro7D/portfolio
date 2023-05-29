@@ -1,18 +1,23 @@
 <template>
-    <div id="skills-section">
-
-        <h1>Skills</h1>
+    <section id="skills-section">
         <div v-if="skills">
-            <div v-for="skill in skills" :key="skill.id">{{ skill.name }}</div>
+            <h1>Skills</h1>
+            <div v-for="skill in skills" :key="skill.id">
+                <i class="skill-icon" :class="skill.icon_path"></i>
+                {{ skill.name }}
+            </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>
 export default {
     name: 'Skills',
 
-    // components: {}
+    mounted() {
+        console.log('Skill mounted.')
+    },
+
     props: {
         skills: Array
     }
@@ -20,4 +25,9 @@ export default {
 
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+#skills-section {
+    height: 1000px;
+    background-color: aqua;
+}
+</style>

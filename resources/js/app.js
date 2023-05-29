@@ -7,6 +7,9 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import { BCarousel } from 'bootstrap';
+
+Vue.component('b-carousel', BCarousel);
 
 /**
  * The following block of code may be used to automatically register your

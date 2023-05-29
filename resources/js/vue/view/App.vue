@@ -4,6 +4,7 @@
         <div v-else-if="portfolio" class="layout-container">
             <Header />
             <main>
+                <div id="start-page"></div>
                 <Section id="about-me-section" :section="portfolio.section" />
                 <Skills id="skills-section" :skills="portfolio.skills" />
                 <router-view id="projects-section"
@@ -76,6 +77,10 @@ export default {
     main {
         overflow-y: scroll;
         flex-grow: 1;
+
+        section {
+            height: 100%;
+        }
     }
 
     header,

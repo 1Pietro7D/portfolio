@@ -10,7 +10,7 @@ const router = new VueRouter({
     routes: [
 
         {
-            path: '/project',  //:slug
+            path: '/project/:slug',
             name: 'project',
             component: ProjectDetail
         },
@@ -20,7 +20,7 @@ const router = new VueRouter({
             component: () => import('./vue/components/NotFound.vue')
         }, {
             path: '*',
-            name: 'home', alias: ['/home', '/portfolio'],
+            name: 'home', //alias: ['/home', '/portfolio'],
             component: Projects
         }
     ]

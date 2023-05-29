@@ -2,7 +2,8 @@
     <header>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark" data-bs-theme="dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Portfolio</a>
+                <a class="navbar-brand" href="#start-page">Portfolio</a>
+                <!--router-link :to="{ name: 'home' }" class="navbar-brand">Portfolio</router-link-->
                 <button class="navbar-toggler" type="button" id="navbarTogglerSupported" data-toggle="collapse"
                     data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
