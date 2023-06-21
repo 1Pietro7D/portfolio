@@ -3,9 +3,10 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 import ProjectDetail from "./vue/components/ProjectDetail.vue"
-import Projects from "./vue/components/ProjectsCarousel.vue"
+import Projects from "./vue/components/Carousel3D.vue"
 
 const router = new VueRouter({
+
     // mode: 'history',
     routes: [
 
@@ -19,9 +20,10 @@ const router = new VueRouter({
             name: "404",
             component: () => import('./vue/components/NotFound.vue')
         }, {
-            path: '*',
+            path: '/',
             name: 'home', //alias: ['/home', '/portfolio'],
-            component: Projects
+            component: Projects,
+
         }
     ]
 });

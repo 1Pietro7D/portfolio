@@ -11,7 +11,13 @@
                 <div class="collapse navbar-collapse text-right" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li v-for="(link, i) of links" :key="i" class="nav-item ml-3 py-2">
-                            <a :href="link.path">{{ link.label }}</a>
+                            <router-link @click.native="redirect(link.path)" :to="{ name: 'home', hash: link.path }">
+                                {{ link.label }}
+                            </router-link>
+                            <!-- <a href="link.path"> {{ link.label }}</a> -->
+                        </li>
+                        <li class="nav-item ml-3 py-2">
+                            <a href="../back">BackOffice</a>
                         </li>
                     </ul>
                 </div>
@@ -39,16 +45,22 @@ export default {
                 }, {
                     label: 'Contact me',
                     path: '#contact-me-section'
-                }, {
-                    label: 'BackOffice',
-                    path: '../back'
-                }
+                },
             ]
         }
     },
     mounted() {
         console.log('Header mounted.')
-    }
+    },
+    methods: {
+
+        redirect(elementId) {
+            const element = document.querySelector(elementId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        },
+    },
 
 }
 

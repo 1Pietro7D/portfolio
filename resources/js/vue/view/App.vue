@@ -1,15 +1,16 @@
 <template>
     <div id="app-front">
-        <div v-if="loading">Loading</div>
+        <div v-if="loading" class="loading">
+            <img src="../../../../public/assets/loading-start.gif" alt="loading" class="my-img-fluid">
+        </div>
         <div v-else-if="portfolio" class="layout-container">
             <Header />
             <main>
                 <div id="start-page"></div>
                 <Section id="about-me-section" :section="portfolio.section" />
                 <Skills id="skills-section" :skills="portfolio.skills" />
-                <router-view id="projects-section"
-                    :projects="portfolio.projects"><!-- props for only ProjectsCarousel --></router-view>
-                <Contacts id="contact-me" :contacts="portfolio.contacts" />
+                <Projects id="projects-section" :projects="portfolio.projects" />
+                <Contacts id="contact-me-section" :contacts="portfolio.contacts" />
             </main>
             <Footer />
         </div>
@@ -20,12 +21,12 @@
 
 <script>
 
-import Header from '../components/Header.vue';
-import Section from '../components/Section.vue';
-import Skills from '../components/Skills.vue';
-import Contacts from '../components/Contacts.vue';
-import Footer from '../components/Footer.vue';
-
+import Header from '../sections/Header.vue';
+import Section from '../sections/Section.vue';
+import Skills from '../sections/Skills.vue';
+import Contacts from '../sections/Contacts.vue';
+import Footer from '../sections/Footer.vue';
+import Projects from '../sections/Projects.vue'
 
 export default {
     name: 'app-front',
@@ -33,6 +34,7 @@ export default {
     components: {
         Header,
         Section,
+        Projects,
         Skills,
         Contacts,
         Footer
@@ -45,14 +47,36 @@ export default {
     },
     mounted() {
         this.loadPage('api/portfolio');
+
     },
     methods: {
+        redirectByUrl() {
+            if (this.$route.hash) {
+                const element = document.querySelector(this.$route.hash);
+                console.log(this.$route.hash);
+                console.log(element);
+                if (element) {
+                    element.addEventListener('touchmove', () => { }, { passive: true });
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+
+        },
         loadPage(url) {
             axios.get(url)
                 .then(({ data }) => {
                     if (data.success) {
                         this.portfolio = data.results;
-                        this.loading = false;
+                        setTimeout(() => {
+                            console.log("Timeout scaduto dopo 0.3 secondi.");
+                            this.loading = false;
+                            this.$nextTick(() => {
+                                console.log("dopo");
+                                // Il codice qui verrà eseguito dopo che tutti i componenti figlio sono stati caricati
+                                this.redirectByUrl();
+                            });
+                        }, 300);
+
                     } else {
                         this.$route.push({ name: 'NotFound' });
                     }
@@ -79,13 +103,24 @@ export default {
         flex-grow: 1;
 
         section {
-            height: 100%;
+            min-height: 100%;
         }
     }
 
     header,
     footer {
         flex-shrink: 0;
+    }
+
+    section {
+        padding: 4rem;
+    }
+
+    .loading {
+        width: 100%;
+        height: 100vh;
+        padding: 5rem;
+        background-color: black;
     }
 }
 </style>

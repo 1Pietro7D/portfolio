@@ -1,41 +1,42 @@
 <template>
-    <section>
-        <div class="carousel carousel-dark slide">
-            <div class="carousel-inner">
-                <!-- PROJECT -->
-                <div v-for="(project, i) of projects" :key="i" class="carousel-item" :class="(i == slide) ? 'active' : ''">
-                    <img :src="'/storage/' + project.img_path" class="d-block my-img-fluid" :alt="project.title">
-                    <div class="carousel-caption">
-                        <h5>{{ project.title }}</h5>
-                        <p class="d-none d-md-block">{{ getShortText(project.description) }}</p>
+    <div class="carousel carousel-dark slide">
+        <div class="carousel-inner">
 
-                        <router-link :to="{ name: 'project', params: { slug: project.slug } }" class="btn btn-info">vedi
-                            project</router-link>
-                    </div>
+            <div v-for="(project, i) of projects" :key="i" class="carousel-item" :class="(i == slide) ? 'active' : ''">
+                <img :src="'/storage/' + project.img_path" class="d-block my-img-fluid" :alt="project.title">
+                <div class="carousel-caption">
+                    <h5>{{ project.title }}</h5>
+                    <p class="d-none d-md-block">{{ getShortText(project.description) }}</p>
+
+                    <router-link :to="{ name: 'project', params: { slug: project.slug } }" class="btn btn-info">vedi
+                        project</router-link>
                 </div>
             </div>
-            <!-- BTN CONTROLLER -->
-            <button class="carousel-control-prev" @click="prevSlide()">
-                <span class="carousel-control-prev-icon"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" data-slide="next" @click="nextSlide()">
-                <span class="carousel-control-next-icon"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
         </div>
-    </section>
+
+        <button class="carousel-control-prev" @click="prevSlide()">
+            <span class="carousel-control-prev-icon"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" data-slide="next" @click="nextSlide()">
+            <span class="carousel-control-next-icon"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
 </template>
 
 <script>
 export default {
-    name: 'ProjectsCarousel',
+    name: 'BCarousel',
     data() {
         return {
             slide: 0,
             intervalId: null,
             intervalTime: 7500
         }
+    },
+    mounted() {
+        console.log("Bcarousel");
     },
     methods: {
         prevSlide() {
@@ -63,17 +64,14 @@ export default {
         },
         getShortText(string) {
             let newString = "";
-            for (let index = 0; index <= 70; index++) {
+            for (let index = 0; index <= 150; index++) {
                 newString += string.charAt(index);
             }
             console.log(newString);
             return newString
         },
     },
-    mounted() {
-        console.log('Carousel mounted.')
-        this.startAutoplay()
-    },
+
 
     props: {
         projects: Array
@@ -100,6 +98,7 @@ export default {
 
 }
 
+
 p,
 h5,
 button {
@@ -112,3 +111,7 @@ button {
     object-fit: cover;
 }
 </style>
+
+
+
+
