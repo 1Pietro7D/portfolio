@@ -10,7 +10,7 @@ class CVController extends Controller
     {
         $cv = Utils::getMyPortfolio()->curriculum_vitae_pdf;
         $pdf_path = file_get_contents('storage/'.$cv);
-        $filename = 'cv.pdf';
+        $filename = 'Pietro_Danieli_CV.pdf';
         return response($pdf_path)
             ->header('Content-Type', 'application/pdf')
             ->header('Content-Disposition', 'inline; filename="' . $filename . '"');
@@ -20,7 +20,7 @@ class CVController extends Controller
     {
         $cv = Utils::getMyPortfolio()->curriculum_vitae_pdf;
         $pdf_path = file_get_contents('storage/'.$cv);
-        $filename = 'cv.pdf';
+        $filename = 'Pietro_Danieli_CV.pdf';
         return response($pdf_path)
             ->header('Content-Type', 'application/pdf')
             ->header('Content-Disposition', 'attachment; filename="' . $filename . '"');
