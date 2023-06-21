@@ -19,6 +19,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="/assets/logo5.png">
 </head>
 
 <body>
