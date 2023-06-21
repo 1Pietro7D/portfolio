@@ -11,6 +11,10 @@ import { BCarousel } from 'bootstrap';
 
 Vue.component('b-carousel', BCarousel);
 
+import Carousel3d from 'vue-carousel-3d';
+
+Vue.use(Carousel3d);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -30,10 +34,15 @@ Vue.component('b-carousel', BCarousel);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 import router from './router';
+
 //importiamo il componente App
 import App from './vue/view/App'
 const app = new Vue({
     el: '#app-front',
     render: (h) => h(App), //reiderizziamo su App all'avvio di Vue
     router,
+    methods: {
+
+    },
 });
+
