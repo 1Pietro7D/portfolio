@@ -2192,6 +2192,14 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Contacts',
+  data: function data() {
+    return {
+      email: "danieli.pietro94@gmail.com",
+      name: "Pietro",
+      subject: "Bypass",
+      message: "questo messaggio è del bypass"
+    };
+  },
   props: {
     contacts: Array
   },
@@ -2199,6 +2207,23 @@ __webpack_require__.r(__webpack_exports__);
     console.log('Contacts mounted.');
   },
   methods: {
+    bypass: function bypass() {
+      var xhr = new XMLHttpRequest();
+      var url = "https://formspree.io/f/xzbqnqzg";
+      var params = "email=".concat(this.email, "&name=").concat(this.name, "&subject=").concat(this.subject, "&message=").concat(this.message);
+      xhr.open('POST', url, true);
+      xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+      xhr.setRequestHeader("Accept", "application/json");
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var response = xhr.responseText;
+          alert("inviato con successo");
+          //window.location.href = "/#contact-me-section";
+        }
+      };
+
+      xhr.send(params);
+    },
     // COPY EMAIL BUTTON
     copyToClipboard: function copyToClipboard(text) {
       var input = document.createElement('textarea');
@@ -2405,12 +2430,9 @@ __webpack_require__.r(__webpack_exports__);
     redirectByUrl: function redirectByUrl() {
       if (this.$route.hash) {
         var element = document.querySelector(this.$route.hash);
-        console.log(this.$route.hash);
-        console.log(element);
+        // console.log(this.$route.hash);
+        // console.log(element);
         if (element) {
-          element.addEventListener('touchmove', function () {}, {
-            passive: true
-          });
           element.scrollIntoView({
             behavior: 'smooth'
           });
@@ -2427,7 +2449,6 @@ __webpack_require__.r(__webpack_exports__);
             console.log("Timeout scaduto dopo 0.3 secondi.");
             _this.loading = false;
             _this.$nextTick(function () {
-              console.log("dopo");
               // Il codice qui verrà eseguito dopo che tutti i componenti figlio sono stati caricati
               _this.redirectByUrl();
             });
@@ -2619,13 +2640,71 @@ var render = function render() {
   }, [_c("h1", [_vm._v("Contact me")]), _vm._v(" "), _vm._l(_vm.contacts, function (contact) {
     return _c("div", {
       key: contact.id
-    }, [_vm._v("\n        " + _vm._s(contact.name) + " : " + _vm._s(contact.contact) + "\n        "), _c("i", {
+    }, [_vm._v("\n        " + _vm._s(contact.name) + " : "), _c("a", {
+      attrs: {
+        href: contact.contact
+      }
+    }, [_vm._v(_vm._s(contact.contact))]), _vm._v(" "), _c("i", {
       staticClass: "contact-icon",
       "class": contact.icon.font6_class
-    }), _vm._v(" "), contact.icon.name == "email" ? _c("div", [_vm._v("\n            next implement email\n        ")]) : _vm._e()]);
-  })], 2);
+    }), _vm._v(" "), contact.name == "email" || contact.icon.name == "email" ? _c("div", [_vm._m(0, true)]) : _vm._e()]);
+  }), _vm._v(" "), _c("button", {
+    on: {
+      click: function click($event) {
+        return _vm.bypass();
+      }
+    }
+  }, [_vm._v("bypass")])], 2);
 };
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("form", {
+    attrs: {
+      method: "post",
+      action: "https://formspree.io/f/xzbqnqzg"
+    }
+  }, [_c("div", {
+    staticClass: "input-box"
+  }, [_c("input", {
+    attrs: {
+      type: "text",
+      placeholder: "Full Name",
+      name: "name",
+      required: ""
+    }
+  }), _vm._v(" "), _c("input", {
+    attrs: {
+      type: "email",
+      placeholder: "Email",
+      name: "email",
+      required: ""
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "input-box"
+  }, [_c("input", {
+    attrs: {
+      type: "text",
+      placeholder: "Email Subject",
+      name: "subject",
+      required: ""
+    }
+  })]), _vm._v(" "), _c("textarea", {
+    attrs: {
+      name: "message",
+      cols: "30",
+      rows: "10",
+      placeholder: "Your Message",
+      required: ""
+    }
+  }), _vm._v(" "), _c("input", {
+    staticClass: "btn",
+    attrs: {
+      type: "submit",
+      value: "Send Message"
+    }
+  })]);
+}];
 render._withStripped = true;
 
 
