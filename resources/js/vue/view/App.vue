@@ -53,10 +53,9 @@ export default {
         redirectByUrl() {
             if (this.$route.hash) {
                 const element = document.querySelector(this.$route.hash);
-                console.log(this.$route.hash);
-                console.log(element);
+                // console.log(this.$route.hash);
+                // console.log(element);
                 if (element) {
-                    element.addEventListener('touchmove', () => { }, { passive: true });
                     element.scrollIntoView({ behavior: 'smooth' });
                 }
             }
@@ -71,7 +70,6 @@ export default {
                             console.log("Timeout scaduto dopo 0.3 secondi.");
                             this.loading = false;
                             this.$nextTick(() => {
-                                console.log("dopo");
                                 // Il codice qui verrà eseguito dopo che tutti i componenti figlio sono stati caricati
                                 this.redirectByUrl();
                             });
