@@ -110,9 +110,7 @@ export default {
         flex-shrink: 0;
     }
 
-    section {
-        padding: 4rem;
-    }
+
 
     .loading {
         width: 100%;

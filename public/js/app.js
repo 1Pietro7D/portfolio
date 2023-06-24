@@ -2190,6 +2190,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Contacts',
   data: function data() {
@@ -2205,25 +2209,74 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     console.log('Contacts mounted.');
+    var form = document.getElementById("my-form");
+    function handleSubmit(_x) {
+      return _handleSubmit.apply(this, arguments);
+    }
+    function _handleSubmit() {
+      _handleSubmit = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(event) {
+        var status, data;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              event.preventDefault();
+              status = document.getElementById("my-form-status");
+              data = new FormData(event.target);
+              fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                  'Accept': 'application/json'
+                }
+              }).then(function (response) {
+                if (response.ok) {
+                  status.classList.add("status-ok");
+                  status.innerHTML = "Thanks for your submission!";
+                  form.reset();
+                } else {
+                  response.json().then(function (data) {
+                    if (Object.hasOwn(data, 'errors')) {
+                      status.classList.add("status-error");
+                      status.innerHTML = data["errors"].map(function (error) {
+                        return error["message"];
+                      }).join(", ");
+                    } else {
+                      status.classList.add("status-error");
+                      status.innerHTML = "Oops! There was a problem submitting your form";
+                    }
+                  });
+                }
+              })["catch"](function (error) {
+                status.classList.add("status-error");
+                status.innerHTML = "Oops! There was a problem submitting your form";
+              });
+            case 4:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee);
+      }));
+      return _handleSubmit.apply(this, arguments);
+    }
+    form.addEventListener("submit", handleSubmit);
   },
   methods: {
-    bypass: function bypass() {
-      var xhr = new XMLHttpRequest();
-      var url = "https://formspree.io/f/xzbqnqzg";
-      var params = "email=".concat(this.email, "&name=").concat(this.name, "&subject=").concat(this.subject, "&message=").concat(this.message);
-      xhr.open('POST', url, true);
-      xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
-      xhr.setRequestHeader("Accept", "application/json");
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-          var response = xhr.responseText;
-          alert("inviato con successo");
-          //window.location.href = "/#contact-me-section";
-        }
-      };
-
-      xhr.send(params);
-    },
+    // bypass() {
+    //     const xhr = new XMLHttpRequest()
+    //     const url = "https://formspree.io/f/xzbqnqzg";
+    //     const params = `email=${this.email}&name=${this.name}&subject=${this.subject}&message=${this.message}`;
+    //     xhr.open('POST', url, true);
+    //     xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+    //     xhr.setRequestHeader("Accept", "application/json");
+    //     xhr.onreadystatechange = () => {
+    //         if (xhr.readyState === 4 && xhr.status === 200) {
+    //             const response = xhr.responseText;
+    //             alert("inviato con successo");
+    //             //window.location.href = "/#contact-me-section";
+    //         }
+    //     }
+    //     xhr.send(params);
+    // },
     // COPY EMAIL BUTTON
     copyToClipboard: function copyToClipboard(text) {
       var input = document.createElement('textarea');
@@ -2483,7 +2536,7 @@ var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return true ? _c("div", {
-    staticClass: "p-5"
+    staticClass: "p-sm-2 p-md-3 p-lg-4"
   }, [_c("carousel-3d", {
     attrs: {
       perspective: 30,
@@ -2575,7 +2628,7 @@ var render = function render() {
   })]) : _vm.project ? _c("div", {
     staticClass: "project-container"
   }, [_c("router-link", {
-    staticClass: "absolute-top-right",
+    staticClass: "projects-home",
     attrs: {
       to: {
         name: "home"
@@ -2634,35 +2687,61 @@ var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c("section", {
+    staticClass: "my-flex-section",
     attrs: {
-      id: "contact-me"
+      id: "contact-me-section"
     }
-  }, [_c("h1", [_vm._v("Contact me")]), _vm._v(" "), _vm._l(_vm.contacts, function (contact) {
+  }, [_c("h1", [_vm._v("Contact me!")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("div", [_c("h2", [_vm._v("Other contact")]), _vm._v(" "), _vm._l(_vm.contacts, function (contact) {
     return _c("div", {
       key: contact.id
-    }, [_vm._v("\n        " + _vm._s(contact.name) + " : "), _c("a", {
+    }, [contact.name == "email" || contact.icon.name == "email" ? _c("div", {
+      staticClass: "contact-item-box"
+    }, [_c("i", {
+      staticClass: "contact-icon",
+      "class": contact.icon.font6_class
+    }), _vm._v(" "), _c("span", [_vm._v(_vm._s(contact.name) + " ")]), _c("span", [_vm._v(" " + _vm._s(contact.contact))]), _vm._v(" "), _c("div", {
+      staticClass: "copy-email-btn",
+      on: {
+        click: function click($event) {
+          return _vm.copyToClipboard(contact.contact);
+        }
+      }
+    }, [_c("i", {
+      staticClass: "fa-solid fa-copy"
+    }), _vm._v(" "), _c("span", {
+      staticStyle: {
+        display: "none"
+      },
+      attrs: {
+        id: "copyConfirmation"
+      }
+    }, [_vm._v("Copied!")])])]) : _c("div", {
+      staticClass: "contact-item-box"
+    }, [_c("i", {
+      staticClass: "contact-icon",
+      "class": contact.icon.font6_class
+    }), _vm._v(" "), _c("span", [_vm._v(" " + _vm._s(contact.name) + " ")]), _vm._v(" "), _c("a", {
       attrs: {
         href: contact.contact
       }
-    }, [_vm._v(_vm._s(contact.contact))]), _vm._v(" "), _c("i", {
-      staticClass: "contact-icon",
-      "class": contact.icon.font6_class
-    }), _vm._v(" "), contact.name == "email" || contact.icon.name == "email" ? _c("div", [_vm._m(0, true)]) : _vm._e()]);
-  }), _vm._v(" "), _c("button", {
+    }, [_vm._v(_vm._s(contact.contact))])])]);
+  })], 2), _vm._v(" "), _c("button", {
+    staticClass: "d-none",
     on: {
       click: function click($event) {
         return _vm.bypass();
       }
     }
-  }, [_vm._v("bypass")])], 2);
+  }, [_vm._v("bypass form")])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("form", {
     attrs: {
-      method: "post",
-      action: "https://formspree.io/f/xzbqnqzg"
+      id: "my-form",
+      action: "https://formspree.io/f/xzbqnqzg",
+      method: "POST"
     }
   }, [_c("div", {
     staticClass: "input-box"
@@ -2689,7 +2768,9 @@ var staticRenderFns = [function () {
       name: "subject",
       required: ""
     }
-  })]), _vm._v(" "), _c("textarea", {
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "input-box"
+  }, [_c("textarea", {
     attrs: {
       name: "message",
       cols: "30",
@@ -2697,11 +2778,14 @@ var staticRenderFns = [function () {
       placeholder: "Your Message",
       required: ""
     }
-  }), _vm._v(" "), _c("input", {
-    staticClass: "btn",
+  })]), _vm._v(" "), _c("button", {
+    staticClass: "btn btn-info",
     attrs: {
-      type: "submit",
-      value: "Send Message"
+      id: "my-form-button"
+    }
+  }, [_vm._v("Submit")]), _vm._v(" "), _c("p", {
+    attrs: {
+      id: "my-form-status"
     }
   })]);
 }];
@@ -2765,7 +2849,7 @@ var render = function render() {
     }
   }, [_c("ul", {
     staticClass: "navbar-nav ml-auto"
-  }, [_vm._l(_vm.links, function (link, i) {
+  }, _vm._l(_vm.links, function (link, i) {
     return _c("li", {
       key: i,
       staticClass: "nav-item ml-3 py-2"
@@ -2782,7 +2866,7 @@ var render = function render() {
         }
       }
     }, [_vm._v("\n                            " + _vm._s(link.label) + "\n                        ")])], 1);
-  }), _vm._v(" "), _vm._m(1)], 2)])])])]);
+  }), 0)])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -2801,16 +2885,6 @@ var staticRenderFns = [function () {
   }, [_c("span", {
     staticClass: "navbar-toggler-icon"
   })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("li", {
-    staticClass: "nav-item ml-3 py-2"
-  }, [_c("a", {
-    attrs: {
-      href: "../back"
-    }
-  }, [_vm._v("BackOffice")])]);
 }];
 render._withStripped = true;
 
@@ -2863,7 +2937,9 @@ var render = function render() {
           return _vm.redirect("#projects-section");
         }
       }
-    });
+    }, [_c("div", {
+      staticClass: "proj-title"
+    }, [_vm._v(_vm._s(project.title))])]);
   }), 1)]);
 };
 var staticRenderFns = [];
@@ -7454,7 +7530,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".loading[data-v-565abc58] {\n  margin: auto;\n  width: 50%;\n}\n.project-container .flex-container[data-v-565abc58] {\n  padding: 2rem 4rem;\n  display: flex;\n  flex-wrap: wrap-reverse;\n  justify-content: space-between;\n  gap: 2rem;\n}\n.project-container .flex-container .media-container[data-v-565abc58],\n.project-container .flex-container .project-details[data-v-565abc58] {\n  width: calc(50% - 1rem);\n}\n@media screen and (max-width: 800px) {\n.project-container .flex-container .media-container[data-v-565abc58],\n  .project-container .flex-container .project-details[data-v-565abc58] {\n    width: 100%;\n}\n}\n.project-container .flex-container .media-container div[data-v-565abc58] {\n  border: 3px solid #767bb3;\n  border-radius: 6px;\n}\n.absolute-top-right[data-v-565abc58] {\n  position: absolute;\n  top: 10rem;\n  left: 8rem;\n  color: white;\n  text-decoration: none;\n  font-size: 2rem;\n}\n.project-img[data-v-565abc58] {\n  width: 100%;\n  margin-bottom: 2rem;\n}\n.project-video[data-v-565abc58] {\n  width: 100%;\n}", ""]);
+exports.push([module.i, ".loading[data-v-565abc58] {\n  margin: auto;\n  width: 50%;\n}\n.project-container .flex-container[data-v-565abc58] {\n  padding: 2rem 4rem;\n  display: flex;\n  flex-wrap: wrap-reverse;\n  justify-content: space-between;\n  gap: 2rem;\n}\n.project-container .flex-container .media-container[data-v-565abc58],\n.project-container .flex-container .project-details[data-v-565abc58] {\n  width: calc(50% - 1rem);\n}\n@media screen and (max-width: 800px) {\n.project-container .flex-container .media-container[data-v-565abc58],\n  .project-container .flex-container .project-details[data-v-565abc58] {\n    width: 100%;\n}\n}\n.project-container .flex-container .media-container div[data-v-565abc58] {\n  border: 3px solid #767bb3;\n  border-radius: 6px;\n}\n@media screen and (max-width: 300px) {\n.project-container .flex-container[data-v-565abc58] {\n    padding: 0.5rem 1rem;\n}\n}\n@media screen and (min-width: 301px) and (max-width: 768px) {\n.project-container .flex-container[data-v-565abc58] {\n    padding: 1rem 2rem;\n}\n}\n.projects-home[data-v-565abc58] {\n  margin-left: 1rem;\n  color: white;\n  text-decoration: none;\n  font-size: 2rem;\n}\n.project-img[data-v-565abc58] {\n  width: 100%;\n  margin-bottom: 2rem;\n}\n.project-video[data-v-565abc58] {\n  width: 100%;\n}", ""]);
 
 // exports
 
@@ -7473,7 +7549,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "section[data-v-6b405446] {\n  background-color: #767bb3;\n  text-align: center;\n}", ""]);
+exports.push([module.i, "#contact-me-section[data-v-6b405446] {\n  background-color: #767bb3;\n  text-align: center;\n}\n#contact-me-section .contact-item-box[data-v-6b405446] {\n  display: flex;\n  gap: 1rem;\n  justify-content: center;\n  padding: 0.5rem;\n  align-items: center;\n}\n@media screen and (max-width: 320px) {\n#contact-me-section .contact-item-box[data-v-6b405446] {\n    gap: 0.5rem;\n}\n}\n#contact-me-section #my-form .input-box[data-v-6b405446] {\n  padding: 0.5rem 0;\n}\n#contact-me-section #my-form .input-box *[data-v-6b405446] {\n  border-radius: 6px;\n}\n#contact-me-section #my-form .status-ok[data-v-6b405446] {\n  border: 2px solid green;\n  border-radius: 4px;\n}\n#contact-me-section #my-form .status-error[data-v-6b405446] {\n  border: 2px solid red;\n  border-radius: 4px;\n}\n#contact-me-section .copy-email-btn[data-v-6b405446] {\n  cursor: pointer;\n  background: var(--bg-color);\n  position: relative;\n}\n#contact-me-section .copy-email-btn i[data-v-6b405446] {\n  vertical-align: bottom;\n  font-size: 2rem;\n  color: var(--main-color);\n}\n#contact-me-section #copyConfirmation[data-v-6b405446] {\n  font-size: 1.5rem;\n  color: #fff;\n  position: absolute;\n  top: -20px;\n  left: -18px;\n}", ""]);
 
 // exports
 
@@ -7511,7 +7587,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#projects-section[data-v-9395baf8] {\n  display: flex;\n  flex-direction: column;\n  gap: 4rem;\n  justify-content: space-between;\n  background-color: black;\n  color: white;\n  position: relative;\n}\n#projects-section .separator[data-v-9395baf8] {\n  margin: auto;\n  border: 1.5px solid rgb(125, 125, 125);\n  width: 90%;\n}\n#projects-section .projects-slides[data-v-9395baf8] {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 2rem;\n  justify-content: center;\n}\n#projects-section .projects-slides .project-card[data-v-9395baf8] {\n  display: inline-block;\n  height: 100px;\n  width: 200px;\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  border: 3px white solid;\n  border-radius: 15px;\n}", ""]);
+exports.push([module.i, "#projects-section[data-v-9395baf8] {\n  display: flex;\n  flex-direction: column;\n  padding: 4rem;\n  gap: 4rem;\n  justify-content: space-between;\n  background-color: black;\n  color: white;\n  position: relative;\n}\n#projects-section .separator[data-v-9395baf8] {\n  margin: auto;\n  border: 1.5px solid rgb(125, 125, 125);\n  width: 90%;\n}\n#projects-section .projects-slides[data-v-9395baf8] {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 2rem;\n  justify-content: center;\n}\n#projects-section .projects-slides .project-card[data-v-9395baf8] {\n  display: inline-block;\n  height: 100px;\n  width: 200px;\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  border: 3px white solid;\n  border-radius: 15px;\n}\n#projects-section .projects-slides .project-card .proj-title[data-v-9395baf8] {\n  padding: 0.5rem;\n  text-align: center;\n  background-color: rgba(0, 0, 0, 0.7);\n  border-radius: 12px 12px 0 0;\n  color: white;\n}\n@media screen and (max-width: 400px) {\n#projects-section[data-v-9395baf8] {\n    gap: 1rem;\n    padding: 0.5rem;\n}\n}\n@media screen and (min-width: 401px) and (max-width: 768px) {\n#projects-section[data-v-9395baf8] {\n    gap: 2rem;\n    padding: 1rem;\n}\n}", ""]);
 
 // exports
 
@@ -7530,7 +7606,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#about-me-section[data-v-57c8bc4b] {\n  background-color: black;\n  color: white;\n}\n#about-me-section .section-container[data-v-57c8bc4b] {\n  display: flex;\n  align-items: center;\n  gap: 2rem;\n}\n#about-me-section .section-container .my-img-container[data-v-57c8bc4b] {\n  padding: 1rem;\n  margin: auto;\n}\n#about-me-section .section-container .my-img-container .my-img-cover[data-v-57c8bc4b] {\n  width: 400px;\n  height: 400px;\n  border: 5px solid white;\n  border-radius: 1rem;\n}\n#about-me-section .section-container .my-img-container .my-img-cover img[data-v-57c8bc4b] {\n  border-radius: calc(1rem - 5px);\n}\n#about-me-section .section-container .btns-container[data-v-57c8bc4b] {\n  display: flex;\n  padding: 0.5rem;\n  gap: 0.5rem;\n}\n#about-me-section .section-container .btns-container .btn-cv[data-v-57c8bc4b] {\n  width: 38px;\n  height: 38px;\n  border-radius: 50%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n#about-me-section .section-container .btns-container .btn-cv.download[data-v-57c8bc4b] {\n  background-color: aqua;\n}\n#about-me-section .section-container .btns-container .btn-cv.view[data-v-57c8bc4b] {\n  background-color: rgb(0, 255, 0);\n}\n@media screen and (max-width: 1200px) {\n#about-me-section .section-container[data-v-57c8bc4b] {\n    flex-wrap: wrap-reverse;\n}\n}", ""]);
+exports.push([module.i, "#about-me-section[data-v-57c8bc4b] {\n  background-color: black;\n  color: white;\n}\n#about-me-section .section-container[data-v-57c8bc4b] {\n  display: flex;\n  align-items: center;\n  gap: 2rem;\n}\n#about-me-section .section-container .my-img-container[data-v-57c8bc4b] {\n  margin: auto;\n}\n#about-me-section .section-container .my-img-container .my-img-cover[data-v-57c8bc4b] {\n  width: 400px;\n  height: 400px;\n  border: 5px solid white;\n  border-radius: 1rem;\n}\n#about-me-section .section-container .my-img-container .my-img-cover img[data-v-57c8bc4b] {\n  border-radius: calc(1rem - 5px);\n}\n#about-me-section .section-container .cv-container[data-v-57c8bc4b] {\n  display: flex;\n  align-items: center;\n}\n#about-me-section .section-container .cv-container .btns-container[data-v-57c8bc4b] {\n  display: flex;\n  padding: 0.5rem;\n  gap: 0.5rem;\n}\n#about-me-section .section-container .cv-container .btns-container .btn-cv[data-v-57c8bc4b] {\n  width: 38px;\n  height: 38px;\n  border-radius: 50%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n#about-me-section .section-container .cv-container .btns-container .btn-cv.download[data-v-57c8bc4b] {\n  background-color: aqua;\n}\n#about-me-section .section-container .cv-container .btns-container .btn-cv.view[data-v-57c8bc4b] {\n  background-color: rgb(0, 255, 0);\n}\n@media screen and (max-width: 1200px) {\n#about-me-section .section-container[data-v-57c8bc4b] {\n    flex-wrap: wrap-reverse;\n}\n}\n@media screen and (max-width: 500px) {\n#about-me-section .section-container .my-img-container .my-img-cover[data-v-57c8bc4b] {\n    width: 250px;\n    height: 250px;\n}\n}", ""]);
 
 // exports
 
@@ -7549,7 +7625,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#skills-section[data-v-6ac7dacc] {\n  background-color: #767bb3;\n}\n#skills-section .skills-container[data-v-6ac7dacc] {\n  display: flex;\n  justify-content: center;\n  flex-wrap: wrap;\n  gap: 1rem;\n}\n#skills-section .skills-container .skill-card[data-v-6ac7dacc] {\n  padding: 1rem 2rem;\n  border: 2px red solid;\n  border-radius: 10rem;\n}", ""]);
+exports.push([module.i, "#skills-section[data-v-6ac7dacc] {\n  background-color: #767bb3;\n}\n#skills-section .skills-container[data-v-6ac7dacc] {\n  display: flex;\n  justify-content: center;\n  flex-wrap: wrap;\n  gap: 1rem;\n}\n#skills-section .skills-container .skill-card[data-v-6ac7dacc] {\n  padding: 0.75rem 1.5rem;\n  border: 2px red solid;\n  border-radius: 10rem;\n  box-shadow: 0 0 14px rgba(155, 0, 0, 0.5);\n  font-weight: bold;\n  color: white;\n  background-color: #000537;\n  display: flex;\n  gap: 0.5rem;\n  align-items: center;\n}\n#skills-section .skills-container .skill-card .skill-icon[data-v-6ac7dacc] {\n  font-size: 24px;\n}", ""]);
 
 // exports
 
@@ -7568,7 +7644,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".layout-container[data-v-71f3f504] {\n  display: flex;\n  flex-direction: column;\n  height: 100vh;\n}\n.layout-container main[data-v-71f3f504] {\n  overflow-y: scroll;\n  flex-grow: 1;\n}\n.layout-container main section[data-v-71f3f504] {\n  min-height: 100%;\n}\n.layout-container header[data-v-71f3f504],\n.layout-container footer[data-v-71f3f504] {\n  flex-shrink: 0;\n}\n.layout-container section[data-v-71f3f504] {\n  padding: 4rem;\n}\n.layout-container .loading[data-v-71f3f504] {\n  width: 100%;\n  height: 100vh;\n  padding: 5rem;\n  background-color: black;\n}", ""]);
+exports.push([module.i, ".layout-container[data-v-71f3f504] {\n  display: flex;\n  flex-direction: column;\n  height: 100vh;\n}\n.layout-container main[data-v-71f3f504] {\n  overflow-y: scroll;\n  flex-grow: 1;\n}\n.layout-container main section[data-v-71f3f504] {\n  min-height: 100%;\n}\n.layout-container header[data-v-71f3f504],\n.layout-container footer[data-v-71f3f504] {\n  flex-shrink: 0;\n}\n.layout-container .loading[data-v-71f3f504] {\n  width: 100%;\n  height: 100vh;\n  padding: 5rem;\n  background-color: black;\n}", ""]);
 
 // exports
 

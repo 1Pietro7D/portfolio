@@ -5,7 +5,7 @@
             <!-- <img src="../../../../public/assets/loading.gif" alt="loading" class="my-img-fluid" /> -->
         </div>
         <div v-else-if="project" class="project-container">
-            <router-link :to="{ name: 'home' }" class="absolute-top-right"><i class="fa-solid fa-house"></i></router-link>
+            <router-link :to="{ name: 'home' }" class="projects-home"><i class="fa-solid fa-house"></i></router-link>
             <div class="flex-container">
 
                 <div class="project-details">
@@ -128,6 +128,7 @@ export default {
         justify-content: space-between;
         gap: 2rem;
 
+
         .media-container,
         .project-details {
             width: calc(50% - 1rem);
@@ -147,12 +148,23 @@ export default {
             border-radius: 6px;
         }
     }
+
+    @media screen and (max-width: 300px) {
+        .flex-container {
+            padding: .5rem 1rem;
+        }
+    }
+
+    @media screen and (min-width: 301px) and (max-width: 768px) {
+        .flex-container {
+            padding: 1rem 2rem;
+        }
+    }
+
 }
 
-.absolute-top-right {
-    position: absolute;
-    top: 10rem;
-    left: 8rem;
+.projects-home {
+    margin-left: 1rem;
     color: white;
     text-decoration: none;
     font-size: 2rem;

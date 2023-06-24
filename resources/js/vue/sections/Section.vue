@@ -53,7 +53,7 @@ export default {
         gap: 2rem;
 
         .my-img-container {
-            padding: 1rem;
+            //padding: 1rem;
             margin: auto;
 
 
@@ -70,35 +70,50 @@ export default {
             }
         }
 
-        .btns-container {
+        .cv-container {
             display: flex;
-            padding: .5rem;
-            gap: .5rem;
+            align-items: center;
 
-            .btn-cv {
-                width: 38px;
-                height: 38px;
-                border-radius: 50%;
+            .btns-container {
                 display: flex;
-                justify-content: center;
-                align-items: center;
-            }
+                padding: .5rem;
+                gap: .5rem;
 
-            .btn-cv.download {
-                background-color: aqua;
-            }
+                .btn-cv {
+                    width: 38px;
+                    height: 38px;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
 
-            .btn-cv.view {
-                background-color: rgb(0, 255, 0);
+                .btn-cv.download {
+                    background-color: aqua;
+                }
+
+                .btn-cv.view {
+                    background-color: rgb(0, 255, 0);
+                }
             }
         }
-
 
     }
 
     @media screen and (max-width: 1200px) {
         .section-container {
             flex-wrap: wrap-reverse;
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+        .section-container {
+            .my-img-container {
+                .my-img-cover {
+                    width: 250px;
+                    height: 250px
+                }
+            }
         }
     }
 }

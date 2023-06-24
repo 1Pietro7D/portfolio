@@ -53,9 +53,20 @@ export default {
         gap: 1rem;
 
         .skill-card {
-            padding: 1rem 2rem;
+            padding: .75rem 1.5rem;
             border: 2px red solid;
             border-radius: 10rem;
+            box-shadow: 0 0 14px rgba(155, 0, 0, 0.5);
+            font-weight: bold;
+            color: white;
+            background-color: #000537;
+            display: flex;
+            gap: .5rem;
+            align-items: center;
+
+            .skill-icon {
+                font-size: 24px;
+            }
         }
     }
 }

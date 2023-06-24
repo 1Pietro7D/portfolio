@@ -11,8 +11,7 @@
         </div>
         <div>
             <label for="description">Description:</label>
-            <input required maxlength="2000" type="text" required name="description"
-                value="{{ old('description', $project->description) }}">
+            <textarea required maxlength="2000" required name="description" cols="30" rows="10">{{ old('description', $project->description) }}</textarea>
         </div>
         <div>
             <label for="proj_img">Img:</label>

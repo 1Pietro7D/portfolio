@@ -16,6 +16,13 @@
     background-color:transparent;
 }
 
+@media screen  and (max-width: 768px) {
+    ::-webkit-scrollbar {
+        width: 0px;
+    }
+
+}
+
   /***+ END SCROLLBAR GOOGLE +***/
 
 

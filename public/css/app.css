@@ -21419,6 +21419,12 @@ readers do not read off random characters that represent icons */
   background-color: transparent;
 }
 
+@media screen and (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
+}
+
 /***+ END SCROLLBAR GOOGLE +***/
 
 .divider {
@@ -21642,16 +21648,17 @@ readers do not read off random characters that represent icons */
 .bo-home {
   min-height: 100%;
   width: 100%;
-  background-image: url("/assets/0018.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  /* Adatta l'immagine al contenitore, coprendolo completamente */
-  background-position: center center;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
 }
 
 h1 {
   text-align: center;
-  padding: 1.5rem;
+  font-family: "Rubik", sans-serif;
+  font-weight: 800;
+  padding-bottom: 1rem;
 }
 
 h4,
@@ -21676,6 +21683,36 @@ h3 {
   justify-content: center;
   gap: 2rem;
   padding: 2rem;
+}
+
+@media screen and (max-width: 320px) {
+  body {
+    font-size: 0.5rem;
+  }
+
+  .my-flex-section {
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+}
+
+@media screen and (min-width: 321px) and (max-width: 400px) {
+  body {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (min-width: 401px) and (max-width: 600px) {
+  body {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 768px) {
+  .my-flex-section {
+    gap: 1rem;
+    padding: 1rem;
+  }
 }
 
 .debug {

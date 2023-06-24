@@ -1,5 +1,5 @@
 <template>
-    <div class="p-5" v-if="true">
+    <div class="p-sm-2 p-md-3 p-lg-4" v-if="true">
         <carousel-3d :perspective="30" :border="this.border3d" :width="this.width3d" :height="this.height3d"
             :controls-visible="true" :space="this.space3d" :clickable="true">
             <slide v-for="(slide, i) in projects" :index="i" :key="i">

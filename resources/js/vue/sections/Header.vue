@@ -16,9 +16,9 @@
                             </router-link>
                             <!-- <a :href="link.path"> {{ link.label }}</a> -->
                         </li>
-                        <li class="nav-item ml-3 py-2">
+                        <!-- <li class="nav-item ml-3 py-2">
                             <a href="../back">BackOffice</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
