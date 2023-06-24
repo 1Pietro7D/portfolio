@@ -2699,7 +2699,9 @@ var render = function render() {
     }, [_c("i", {
       staticClass: "contact-icon",
       "class": contact.icon.font6_class
-    }), _vm._v(" "), _c("span", [_vm._v(_vm._s(contact.name) + " ")]), _c("span", [_vm._v(" " + _vm._s(contact.contact))]), _vm._v(" "), _c("div", {
+    }), _vm._v(" "), _c("span", [_vm._v(_vm._s(contact.name) + " ")]), _c("span", {
+      staticClass: "contact"
+    }, [_vm._v(" " + _vm._s(contact.contact))]), _vm._v(" "), _c("div", {
       staticClass: "copy-email-btn",
       on: {
         click: function click($event) {
@@ -2721,6 +2723,7 @@ var render = function render() {
       staticClass: "contact-icon",
       "class": contact.icon.font6_class
     }), _vm._v(" "), _c("span", [_vm._v(" " + _vm._s(contact.name) + " ")]), _vm._v(" "), _c("a", {
+      staticClass: "contact",
       attrs: {
         href: contact.contact
       }
@@ -7549,7 +7552,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#contact-me-section[data-v-6b405446] {\n  background-color: #767bb3;\n  text-align: center;\n}\n#contact-me-section .contact-item-box[data-v-6b405446] {\n  display: flex;\n  gap: 1rem;\n  justify-content: center;\n  padding: 0.5rem;\n  align-items: center;\n}\n@media screen and (max-width: 320px) {\n#contact-me-section .contact-item-box[data-v-6b405446] {\n    gap: 0.5rem;\n}\n}\n#contact-me-section #my-form .input-box[data-v-6b405446] {\n  padding: 0.5rem 0;\n}\n#contact-me-section #my-form .input-box *[data-v-6b405446] {\n  border-radius: 6px;\n}\n#contact-me-section #my-form .status-ok[data-v-6b405446] {\n  border: 2px solid green;\n  border-radius: 4px;\n}\n#contact-me-section #my-form .status-error[data-v-6b405446] {\n  border: 2px solid red;\n  border-radius: 4px;\n}\n#contact-me-section .copy-email-btn[data-v-6b405446] {\n  cursor: pointer;\n  background: var(--bg-color);\n  position: relative;\n}\n#contact-me-section .copy-email-btn i[data-v-6b405446] {\n  vertical-align: bottom;\n  font-size: 2rem;\n  color: var(--main-color);\n}\n#contact-me-section #copyConfirmation[data-v-6b405446] {\n  font-size: 1.5rem;\n  color: #fff;\n  position: absolute;\n  top: -20px;\n  left: -18px;\n}", ""]);
+exports.push([module.i, "#contact-me-section[data-v-6b405446] {\n  background-color: #767bb3;\n  text-align: center;\n}\n#contact-me-section .contact-item-box[data-v-6b405446] {\n  display: flex;\n  gap: 1rem;\n  justify-content: center;\n  padding: 0.5rem;\n  align-items: center;\n  font-weight: bold;\n}\n#contact-me-section .contact-item-box .contact-icon[data-v-6b405446] {\n  font-size: 20px;\n}\n#contact-me-section .contact-item-box .contact[data-v-6b405446] {\n  color: white;\n}\n@media screen and (max-width: 320px) {\n#contact-me-section .contact-item-box[data-v-6b405446] {\n    gap: 0.5rem;\n}\n}\n#contact-me-section #my-form .input-box[data-v-6b405446] {\n  padding: 0.5rem 0;\n}\n#contact-me-section #my-form .input-box *[data-v-6b405446] {\n  border-radius: 6px;\n}\n#contact-me-section #my-form .status-ok[data-v-6b405446] {\n  border: 2px solid green;\n  border-radius: 4px;\n}\n#contact-me-section #my-form .status-error[data-v-6b405446] {\n  border: 2px solid red;\n  border-radius: 4px;\n}\n#contact-me-section .copy-email-btn[data-v-6b405446] {\n  cursor: pointer;\n  background: var(--bg-color);\n  position: relative;\n}\n#contact-me-section .copy-email-btn i[data-v-6b405446] {\n  vertical-align: bottom;\n  font-size: 2rem;\n  color: var(--main-color);\n}\n#contact-me-section #copyConfirmation[data-v-6b405446] {\n  font-size: 1.5rem;\n  color: #fff;\n  position: absolute;\n  top: 20px;\n  left: 30px;\n}", ""]);
 
 // exports
 

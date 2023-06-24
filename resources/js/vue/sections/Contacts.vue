@@ -21,7 +21,8 @@
                 <div v-if="contact.name == 'email' || contact.icon.name == 'email'" class="contact-item-box">
 
                     <i class="contact-icon" :class="contact.icon.font6_class"></i>
-                    <span>{{ contact.name }} </span><span> {{ contact.contact }}</span>
+                    <span>{{ contact.name }} </span><span class="contact"> {{ contact.contact }}</span>
+
                     <div @click="copyToClipboard(contact.contact)" class="copy-email-btn"><i class='fa-solid fa-copy'></i>
                         <span id="copyConfirmation" style="display: none;">Copied!</span>
                     </div>
@@ -29,7 +30,7 @@
                 </div>
                 <div v-else class="contact-item-box">
                     <i class="contact-icon" :class="contact.icon.font6_class"></i>
-                    <span> {{ contact.name }} </span> <a :href="contact.contact">{{ contact.contact }}</a>
+                    <span> {{ contact.name }} </span> <a class="contact" :href="contact.contact">{{ contact.contact }}</a>
                 </div>
             </div>
         </div>
@@ -142,6 +143,15 @@ export default {
         justify-content: center;
         padding: .5rem;
         align-items: center;
+        font-weight: bold;
+
+        .contact-icon {
+            font-size: 20px;
+        }
+
+        .contact {
+            color: white;
+        }
     }
 
     @media screen and (max-width: 320px) {
@@ -187,8 +197,8 @@ export default {
         font-size: 1.5rem;
         color: #fff;
         position: absolute;
-        top: -20px;
-        left: -18px;
+        top: 20px;
+        left: 30px;
     }
 
 }
